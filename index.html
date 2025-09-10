@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Seblak Kuyy — Warung Seblak Interaktif</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div id="loading">
+    <div class="loader">
+      <div class="flame"></div>
+      <div class="text">Memanaskan Seblak Kuyy...</div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="#hero" class="brand">🌶️ Seblak Kuyy</a>
+      <button id="toggleTheme" class="theme-btn" aria-label="Toggle theme">🌙</button>
+    </div>
+    <div class="nav-right">
+      <a href="#menu" class="nav-link">Menu</a>
+      <a href="#pesan" class="nav-link">Pesan</a>
+      <a href="#lokasi" class="nav-link">Lokasi</a>
+      <a href="#review" class="nav-link">Review</a>
+      <button id="cartBtn" class="cart-btn" aria-label="Open cart">🛒 <span id="cartCount">0</span></button>
+    </div>
+  </nav>
+
+  <!-- Hero / Header -->
+  <header id="hero" class="hero section">
+    <div class="maskot-area">
+      <div class="maskot api" id="maskot">
+        <div class="lidah"></div>
+        <div class="mata mata-kiri"></div>
+        <div class="mata mata-kanan"></div>
+        <div class="mulut"></div>
+      </div>
+      <div class="hero-text">
+        <h1>Seblak Kuyy</h1>
+        <p class="tagline">Pedasnya bikin nagih — delivery & dine-in</p>
+        <div class="hero-actions">
+          <a href="#menu" class="btn primary">Lihat Menu</a>
+          <a href="https://wa.me/6281234567890?text=Halo%20Seblak%20Kuyy%2C%20saya%20mau%20pesan!" target="_blank" class="btn whatsapp">Pesan via WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Floating decorative flames -->
+  <div class="bg-flame flame-1"></div>
+  <div class="bg-flame flame-2"></div>
+
+  <!-- Menu Section -->
+  <section id="menu" class="section">
+    <h2 class="section-title">Menu Andalan</h2>
+    <div class="menu-grid" id="menuGrid">
+      <!-- Items injected by JS -->
+    </div>
+  </section>
+
+  <!-- Pesan / Order Section -->
+  <section id="pesan" class="section">
+    <h2 class="section-title">Form Pemesanan Langsung</h2>
+    <div class="order-grid">
+      <form id="orderForm" class="order-form">
+        <label>Nama
+          <input type="text" id="custName" required placeholder="Nama lengkap" />
+        </label>
+        <label>No. Telp / WA
+          <input type="tel" id="custPhone" required placeholder="081400814989" />
+        </label>
+        <label>Alamat (untuk delivery)
+          <textarea id="custAddress" rows="3" placeholder="Alamat lengkap"></textarea>
+        </label>
+        <label>Pilih Menu (nama + jumlah dipakai dari cart bila ada)
+          <select id="menuSelect">
+            <option value="">— pilih dari menu —</option>
+          </select>
+        </label>
+        <label>Level Pedas
+          <select id="spiceLevel">
+            <option value="1">Level 1 - Adem</option>
+            <option value="2">Level 2 - Biasa</option>
+            <option value="3">Level 3 - Pedas</option>
+            <option value="4">Level 4 - Pedas Banget</option>
+            <option value="5">Level 5 - Gila Pedas</option>
+          </select>
+        </label>
+        <div class="order-actions">
+          <button type="submit" class="btn primary">Kirim Pesanan</button>
+          <button type="button" id="clearCart" class="btn ghost">Bersihkan Keranjang</button>
+        </div>
+      </form>
+
+      <aside class="cart-panel">
+        <h3>Keranjangmu</h3>
+        <ul id="cartList" class="cart-list"></ul>
+        <div class="cart-total">Total: Rp <span id="cartTotal">0</span></div>
+        <div class="cart-actions">
+          <button id="checkoutBtn" class="btn primary">Checkout</button>
+          <a id="whatsappCheckout" class="btn whatsapp" target="_blank">Checkout via WA</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Lokasi Section -->
+  <section id="lokasi" class="section">
+    <h2 class="section-title">Lokasi Warung</h2>
+    <div class="map-and-info">
+      <div class="map-container">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.029705476693!2d110.369489!3d-7.824054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a578a17e8b6b9%3A0x5e4a30f81e9e5d5b!2sYogyakarta!5e0!3m2!1sid!2sid!4v1612345678901!5m2!1sid!2sid"
+          width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+      <div class="location-info">
+        <p><strong>Seblak Kuyy</strong><br />Jl. Contoh No.1, Kota Contoh<br />Buka: 10:00 - 22:00</p>
+        <a href="https://wa.me/6281234567890" target="_blank" class="btn whatsapp">Hubungi via WA</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Review Section -->
+  <section id="review" class="section">
+    <h2 class="section-title">Rating & Review</h2>
+    <div class="review-grid">
+      <form id="reviewForm" class="review-form">
+        <label>Nama
+          <input type="text" id="reviewName" required placeholder="Namamu" />
+        </label>
+        <label>Rating
+          <select id="reviewRating">
+            <option value="5">5 — Sangat Puas</option>
+            <option value="4">4 — Puas</option>
+            <option value="3">3 — Cukup</option>
+            <option value="2">2 — Kurang</option>
+            <option value="1">1 — Tidak Puas</option>
+          </select>
+        </label>
+        <label>Review
+          <textarea id="reviewText" rows="3" placeholder="Tulis pengalamanmu..."></textarea>
+        </label>
+        <button class="btn primary" type="submit">Kirim Review</button>
+      </form>
+
+      <div class="reviews-list" id="reviewsList">
+        <!-- reviews injected -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div>© <span id="year"></span> Seblak Kuyy — All rights reserved</div>
+    <div class="footer-links">
+      <a href="#hero">Home</a> · <a href="#menu">Menu</a> · <a href="#pesan">Pesan</a>
+    </div>
+  </footer>
+
+  <!-- Cart Modal (mobile) -->
+  <div id="cartModal" class="modal">
+    <div class="modal-inner">
+      <button id="closeCartModal" class="close">&times;</button>
+      <h3>Keranjang</h3>
+      <ul id="cartModalList" class="cart-list"></ul>
+      <div class="cart-total">Total: Rp <span id="cartModalTotal">0</span></div>
+      <div class="modal-actions">
+        <button id="modalCheckout" class="btn primary">Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sounds -->
+  <audio id="soundApi" src="https://www.soundjay.com/nature/fire-01.mp3" preload="auto"></audio>
+  <audio id="soundMenu" src="https://www.soundjay.com/button/sounds/button-16.mp3" preload="auto"></audio>
+  <audio id="soundNotif" src="https://www.soundjay.com/button/sounds/button-3.mp3" preload="auto"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
